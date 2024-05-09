@@ -45,20 +45,23 @@ def contours():
         #Get biggest contour, taken directly from below: 
         #https://stackoverflow.com/questions/44588279/find-and-draw-the-largest-contour-in-opencv-on-a-specific-color-python
         areas = [cv.contourArea(c) for c in contours]
-        max_index = np.argmax(areas)
-        single_contour=contours[max_index]
+        try:
+            max_index = np.argmax(areas)
+            single_contour=contours[max_index]
 
-        #Taken directly from here: https://pyimagesearch.com/2016/02/01/opencv-center-of-contour/ 
-        moments = cv.moments(single_contour)
-        center_point_x = int(moments["m10"]/moments["m00"])
-        center_point_y = int(moments["m01"]/moments["m00"])
-        area_of_contour = cv.contourArea(single_contour)
+            #Taken directly from here: https://pyimagesearch.com/2016/02/01/opencv-center-of-contour/ 
+            moments = cv.moments(single_contour)
+            center_point_x = int(moments["m10"]/moments["m00"])
+            center_point_y = int(moments["m01"]/moments["m00"])
+            area_of_contour = cv.contourArea(single_contour)
 
-        cv.drawContours(og_img, [single_contour], -1, (255, 0, 0), 3)
-        cv.circle(og_img, (center_point_x, center_point_y), 2, (255, 255, 255), -1)
-        #https://www.geeksforgeeks.org/python-opencv-cv2-puttext-method/
-        cv.putText(og_img, str(area_of_contour), (center_point_x, center_point_y), cv.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2, cv.LINE_AA)
-        img = og_img
+            cv.drawContours(og_img, [single_contour], -1, (255, 0, 0), 3)
+            cv.circle(og_img, (center_point_x, center_point_y), 2, (255, 255, 255), -1)
+            #https://www.geeksforgeeks.org/python-opencv-cv2-puttext-method/
+            cv.putText(og_img, str(area_of_contour), (center_point_x, center_point_y), cv.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2, cv.LINE_AA)
+            img = og_img
+        except Exception as e:
+            pass 
 
         cv.imshow("Image", img)
         key = cv.waitKey(5)
