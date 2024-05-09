@@ -2,7 +2,7 @@
 
 import numpy as np
 import cv2 as cv
-import picamera2 as picamera2
+import picamera2 as Picamera2
 
 #Resources:
 #HELPFUL Video: https://www.youtube.com/watch?v=CXa3UiTh4NQ 
