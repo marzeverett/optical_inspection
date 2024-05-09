@@ -26,8 +26,7 @@ def contours():
     #cv.createTrackbar("lower", 'controls', 0, 225, nothing)
     #cv.createTrackbar("upper", 'controls', 0, 225, nothing)
     while key != ord("s"):
-        still = webcam.read()
-        still = picame2.capture_array()
+        still = picam2.capture_array()
         og_img = still.copy()
         #Convert to grayscale
         img = cv.cvtColor(still, cv.COLOR_BGR2GRAY)
