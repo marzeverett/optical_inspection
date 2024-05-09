@@ -51,6 +51,7 @@ def contours():
 
         cv.drawContours(og_img, [single_contour], -1, (255, 0, 0), 3)
         cv.circle(og_img, (center_point_x, center_point_y), 2, (255, 255, 255), -1)
+        #https://www.geeksforgeeks.org/python-opencv-cv2-puttext-method/
         cv.putText(og_img, str(area_of_contour), (center_point_x, center_point_y), cv.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2, cv.LINE_AA)
         img = og_img
 
